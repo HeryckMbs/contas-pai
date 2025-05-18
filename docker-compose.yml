@@ -1,0 +1,55 @@
+version: '3'
+services:
+
+  db-server:
+    build: 
+      dockerfile: './docker/db-server/db-server.dockerfile'
+      context: .
+    restart: always
+    container_name: db-server
+    ports:
+      - '54320:5432'
+    volumes: 
+      - ./back/storage/app/database:/var/lib/postgresql/data 
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: laravel
+    networks:
+      - rede-aplicacao
+  api-server:
+    build: 
+      dockerfile: './docker/api-server/api-server.dockerfile'
+      context: .
+    restart: always
+    entrypoint: ./entrypoint-dev.sh
+    container_name: api-server
+    ports:
+      - '8080:80'
+    volumes: 
+      - ./back:/var/www/app
+      - /tmp:/tmp
+    networks:
+      - rede-aplicacao
+    depends_on:
+      - db-server
+
+  app-client-server:
+    build: 
+      dockerfile: './docker/app-client-server/app-client-server-dev.dockerfile'
+      context: .
+    restart: always
+    # entrypoint: ["/entrypoint-dev.sh"]  # Aqui você especifica o entrypoint
+    entrypoint: ./entrypoint-dev.sh
+    container_name: app-client-server-dev
+    ports:
+      - '8021:8021' # Certifique-se de mapear a porta correta
+    volumes: 
+      - ./front:/var/www/app
+    networks:
+      - rede-aplicacao
+    depends_on:
+      - api-server          
+
+networks:
+  rede-aplicacao:
+    driver: bridge  

@@ -1,0 +1,100 @@
+// Outline Card
+.v-card--variant-outlined {
+    border-color: rgba(var(--v-theme-borderColor)) !important;
+}
+
+.v-card--variant-elevated,
+.v-card--variant-flat {
+    color: black;
+}
+
+.card-hover {
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+    &:hover {
+        scale: 1.01;
+        transition: all 0.1s ease-in 0s;
+    }
+}
+
+.v-card {
+    width: 100%;
+    overflow: hidden;
+
+    .color-inherits {
+        color: inherit;
+    }
+
+    .feature-card {
+        .v-responsive__content {
+            height: 100%;
+        }
+    }
+
+    .v-timeline-divider__before,
+    .v-timeline-divider__after {
+        background: rgba(var(--v-border-color), 1);
+    }
+}
+
+// Theme cards
+.cardBordered {
+    .v-card {
+        box-shadow: none !important;
+        border: 1px solid rgb(var(--v-theme-borderColor));
+    }
+}
+
+.elevation-o-card {
+    .v-card-item {
+        padding: 0.625rem 1rem;
+    }
+}
+
+.elevation-small-1 {
+    box-shadow: 0px 0px 1px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 3px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12)) !important;
+}
+
+.card-content-overflow-inherit .v-card-item__content {
+    overflow: inherit !important;
+}
+
+.card-tool {
+    border-bottom-width: 6px !important;
+    border-bottom-color: rgb(var(--v-theme-primary)) !important;
+}
+.card-tool-white {
+    border-bottom-width: 6px !important;
+    border-bottom-color: #121212 !important;
+}
+
+.slide-fade-enter-active {
+    transition: all 0.55s ease-out;
+  }
+  
+  .slide-fade-leave-active {
+    transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+  
+  .slide-fade-enter-from,
+  .slide-fade-leave-to {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+
+  .item-card-title-container {
+    display: flex;
+    align-items: center
+}
+
+.item-card-title {
+    padding: 32px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 5px 8px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 14px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12)) !important;
+
+}
+
+.main-title {
+    margin-left: 1%;
+}
+// v-navigation-drawer v-navigation-drawer--left v-navigation-drawer--expand-on-hover v-navigation-drawer--active v-theme--light
